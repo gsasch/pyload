@@ -521,7 +521,7 @@ class resolveCircleCaptcha:
 		return result
 		
 	
-	def process(self, img):
+	def decrypt(self, img):
 		
 		iDebugSaveFile = 0
 		mypalette = None		
@@ -744,12 +744,12 @@ class resolveCircleCaptcha:
 	def decrypt_from_web(self, url):
 		file = cStringIO.StringIO(urllib.urlopen(url).read())
 		img = Image.open(file)
-		coords = self.process(img); 
+		coords = self.decrypt(img); 
 		print "Coords: " + str(coords)
 	
 	#Return coordinates of opened circle (eg (x,y))
 	def decrypt_from_file(self, filename):							
-		coords = self.process(Image.open(filename)); #Can be many different formats.
+		coords = self.decrypt(Image.open(filename)); #Can be many different formats.
 		print "Coords: " + str(coords)
 
 """
